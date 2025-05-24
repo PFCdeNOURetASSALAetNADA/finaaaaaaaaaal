@@ -1,0 +1,79 @@
+{
+  "abonnes": [
+    {
+      "id": 1,
+      "nom": "Martin",
+      "prenom": "Jean",
+      "email": "jean.martin@example.com",
+      "reference": "REF001",
+      "adresse": "Rue du 20 Août, Alger",
+      "telephone": "0555123456",
+      "created_at": "2024-01-01T10:00:00Z"
+    },
+    {
+      "id": 2,
+      "nom": "Dubois",
+      "prenom": "Pierre",
+      "email": "pierre.dubois@example.com",
+      "reference": "REF002",
+      "region": "Alger",
+      "created_at": "2024-01-02T11:00:00Z"
+    },
+    {
+      "id": 3,
+      "nom": "Bernard",
+      "prenom": "Marie",
+      "email": "marie.bernard@example.com",
+      "reference": "REF003",
+      "region": "Alger",
+      "created_at": "2024-01-03T12:00:00Z"
+    },
+    {
+      "id": 4,
+      "nom": "Petit",
+      "prenom": "Paul",
+      "email": "paul.petit@example.com",
+      "reference": "REF004",
+      "created_at": "2024-01-04T13:00:00Z"
+    }
+  ],
+  "superviseurs": [
+    {
+      "id": 1,
+      "nom": "Lefebvre",
+      "prenom": "Thomas",
+      "email": "thomas.lefebvre@sonelgaz.dz",
+      "password": "superviseur123",
+      "region": "Alger"
+    }
+  ],
+  "operateurs": [
+    {
+      "id": 1,
+      "nom": "Moreau",
+      "prenom": "Sophie",
+      "email": "sophie.moreau@sonelgaz.dz",
+      "password": "operateur123",
+      "region": "Alger"
+    }
+  ],
+  "admins": [
+    {
+      "id": 1,
+      "nom": "Girard",
+      "prenom": "Philippe",
+      "email": "admin@sonelgaz.dz",
+      "password": "admin123"
+    }
+  ],
+  "reclamations": [
+    {
+      "id": 1,
+      "abonne_id": 1,
+      "type": "Coupure d'électricité",
+      "description": "Coupure d'électricité depuis deux heures",
+      "statut": "en_attente",
+      "created_at": "2024-01-05T14:00:00Z"
+    }
+  ]
+} 
