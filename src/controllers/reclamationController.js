@@ -4,18 +4,26 @@ const DateReclamation = require('../models/date');
 // إنشاء شكوى جديدة
 exports.create = async (req, res) => {
     try {
-        // إنشاء الشكوى
-        const reclamation = await Reclamation.create(req.body);
+        // Get abonne_id from the authenticated user
+        const abonne_id = req.params.id;
+
+        // Create the reclamation with the abonne_id
+        const reclamation = await Reclamation.create({
+            ...req.body,
+            abonne_id,
+            date_creation: new Date(),
+            date_modification: new Date()
+        });
         
-        // إنشاء سجل التواريخ
+        // Create the date record
         const dateRecord = await DateReclamation.create({
             reclamation_id: reclamation.id,
-            abonne_id: req.body.abonne_id,
+            abonne_id,
             date_creation: new Date(),
             date_modification: new Date()
         });
 
-        // إرجاع الشكوى مع معلومات التواريخ
+        // Return the reclamation with date information
         const response = {
             reclamation: reclamation,
             dates: dateRecord
@@ -41,10 +49,21 @@ exports.getAll = async (req, res) => {
 // الحصول على شكوى واحدة بواسطة المعرف
 exports.getOne = async (req, res) => {
     try {
-        const reclamation = await Reclamation.findByPk(req.params.id);
+        const reclamation = await Reclamation.findAll({
+            where: { 
+                abonne_id: req.params.id
+            },
+            include: [{
+                model: DateReclamation,
+                as: 'DateReclamation',
+                attributes: ['date_creation', 'date_modification']
+            }]
+        });
+
         if (!reclamation) {
-            return res.status(404).json({ message: 'الشكوى غير موجودة' });
+            return res.status(404).json({ message: 'الشكوى غير موجودة أو غير مصرح لك بالوصول إليها' });
         }
+
         res.status(200).json(reclamation);
     } catch (error) {
         res.status(500).json({ message: error.message });

@@ -27,13 +27,15 @@ const superviseurRoutes = require('./routes/superviseur');
 const operateurRoutes = require('./routes/operateur');
 const abonneRoutes = require('./routes/abonne');
 const reclamationRoutes = require('./routes/reclamation');
+const affectationRoutes = require('./routes/affectation');
 
 // Use routes
+app.use('/api/reclamations', reclamationRoutes);
 app.use('/api/administrateurs', administrateurRoutes);
 app.use('/api/superviseurs', superviseurRoutes);
 app.use('/api/operateurs', operateurRoutes);
 app.use('/api/abonnes', abonneRoutes);
-app.use('/api/reclamations', reclamationRoutes);
+app.use('/api/affectations', affectationRoutes);
 
 // نقطة اختبار للواجهة الأمامية
 app.get('/', (req, res) => {

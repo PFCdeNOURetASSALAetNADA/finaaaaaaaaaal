@@ -335,3 +335,16 @@ exports.updateReclamation = async (req, res) => {
     res.status(500).json({ error: 'Échec de la mise à jour de la réclamation.' });
   }
 };
+
+exports.getAllAgents = async (req, res) => {
+  try {
+    const agents = await Agent.findAll({
+      attributes: ['id', 'nom', 'prenom', 'telephone', 'visibilite', 'charge_actuelle'],
+      order: [['nom', 'ASC']]
+    });
+    res.status(200).json(agents);
+  } catch (error) {
+    console.error('Erreur lors de la récupération des agents:', error);
+    res.status(500).json({ error: error.message });
+  }
+};

@@ -1,12 +1,13 @@
 const Superviseur = require('../models/superviseur');
 const Reclamation = require('../models/reclamation');
 const Abonne = require('../models/abonne');
+const Operateur = require('../models/operateur');
 const jwt = require('jsonwebtoken');
 
 // إنشاء مشرف جديد
 exports.register = async (req, res) => {
   try {
-    const { nom, prenom, email, mot_de_passe } = req.body;
+    const { nom, prenom, email, mot_de_passe, region } = req.body;
 
     // Vérification de l'unicité de l'email
     const emailUnique = await Superviseur.verifierEmailUnique(email);
@@ -18,12 +19,13 @@ exports.register = async (req, res) => {
       nom, 
       prenom, 
       email, 
-      mot_de_passe // Stocker le mot de passe en clair
+      mot_de_passe, // Stocker le mot de passe en clair
+      region
     });
 
     res.status(201).json({ 
       message: 'Superviseur créé avec succès.',
-      superviseur: { id: superviseur.id, nom: superviseur.nom, prenom: superviseur.prenom, email: superviseur.email }
+      superviseur: { id: superviseur.id, nom: superviseur.nom, prenom: superviseur.prenom, email: superviseur.email, region: superviseur.region }
     });
   } catch (error) {
     console.error('Erreur lors de l\'inscription:', error);

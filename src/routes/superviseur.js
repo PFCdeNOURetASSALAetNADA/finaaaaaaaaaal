@@ -12,6 +12,12 @@ router.post('/login', superviseurController.login);
 // Récupérer tous les superviseurs
 router.get('/', authMiddleware, superviseurController.getAll);
 
+// مسارات الشكاوى المرفقة للمشرف
+router.get('/reclamations', (req, res, next) => {
+  console.log('Reached /api/superviseurs/reclamations route');
+  next();
+}, authMiddleware, superviseurController.getReclamationsByRegion);
+
 // Récupérer un superviseur par son id
 router.get('/:id', authMiddleware, superviseurController.getOne);
 

@@ -1,17 +1,18 @@
 const express = require('express');
 const router = express.Router();
 const affectationController = require('../controllers/affectationController');
+const authMiddleware = require('../middleware/authMiddleware');
 
 // Créer une nouvelle affectation
-router.post('/', affectationController.create);
+router.post('/', authMiddleware, affectationController.create);
 
 // جلب جميع التعيينات
-router.get('/', affectationController.getAll);
+router.get('/', authMiddleware, affectationController.getAll);
 
 // جلب تعيين واحد حسب id
-router.get('/:id', affectationController.getOne);
+router.get('/:id', authMiddleware, affectationController.getOne);
 
 // حذف تعيين
-router.delete('/:id', affectationController.delete);
+router.delete('/:id', authMiddleware, affectationController.delete);
 
 module.exports = router;

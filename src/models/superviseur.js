@@ -8,7 +8,8 @@ Superviseur.init({
   nom: { type: DataTypes.STRING, allowNull: false },
   prenom: { type: DataTypes.STRING, allowNull: false },
   email: { type: DataTypes.STRING, allowNull: false, unique: true },
-  mot_de_passe: { type: DataTypes.STRING, allowNull: false }
+  mot_de_passe: { type: DataTypes.STRING, allowNull: false },
+  region: { type: DataTypes.STRING(50), allowNull: false }
 }, {
   sequelize,
   modelName: 'Superviseur',

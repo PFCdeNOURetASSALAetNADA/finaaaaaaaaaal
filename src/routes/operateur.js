@@ -12,12 +12,11 @@ router.get('/', authMiddleware, operateurController.getAll);
 router.get('/reclamations', (req, res, next) => { console.log('Reached /api/operateurs/reclamations route'); next(); }, authMiddleware, operateurController.getMesReclamations);
 router.get('/reclamations/:id', authMiddleware, operateurController.getMaReclamation);
 
-// مسار جلب مشغل واحد حسب id (يجب أن يكون بعد المسارات الأكثر تحديداً)
-router.get('/:id', authMiddleware, operateurController.getOne);
-
 // مسارات إدارة الـ Agent
-router.get('/agents', authMiddleware, operateurController.getAllAgents);
+router.get('/agents', (req, res, next) => { console.log('Reached /api/operateurs/agents route'); next(); }, authMiddleware, operateurController.getAllAgents);
 router.get('/agents/:id', authMiddleware, operateurController.getAgent);
 router.get('/agents/search', authMiddleware, operateurController.searchAgentsByVisibilite);
+
+router.get('/:id', authMiddleware, operateurController.getOne);
 
 module.exports = router;

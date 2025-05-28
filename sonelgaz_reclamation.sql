@@ -24,6 +24,7 @@ CREATE TABLE IF NOT EXISTS abonnes (
     email VARCHAR(100) UNIQUE,
     mot_de_passe VARCHAR(255),
     reference VARCHAR(100) UNIQUE,
+    region VARCHAR(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
     email_verifie BOOLEAN DEFAULT FALSE,
     code_verification VARCHAR(6),
     date_expiration_code DATETIME,
@@ -48,6 +49,7 @@ CREATE TABLE IF NOT EXISTS superviseurs (
     prenom VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
     email VARCHAR(100) UNIQUE,
     mot_de_passe VARCHAR(255),
+    region VARCHAR(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- 6. Agents

@@ -13,7 +13,7 @@ Operateur.init({
   sequelize,
   modelName: 'Operateur',
   tableName: 'operateurs',
-  timestamps: true
+  timestamps: false
 });
 
 // Fonction d'authentification spécifique à Operateur

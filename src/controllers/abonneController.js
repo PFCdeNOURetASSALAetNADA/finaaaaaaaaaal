@@ -5,7 +5,7 @@ const emailService = require('../services/emailService');
 // Création d'un nouvel abonné (inscription)
 exports.register = async (req, res) => {
   try {
-    const { nom, prenom, email, mot_de_passe, reference } = req.body;
+    const { nom, prenom, email, mot_de_passe, reference, region } = req.body;
 
     // Vérification de l'unicité de l'email
     const emailUnique = await Abonne.verifierEmailUnique(email);
@@ -25,7 +25,8 @@ exports.register = async (req, res) => {
       prenom, 
       email, 
       mot_de_passe, // Stocker le mot de passe en clair
-      reference 
+      reference,
+      region
     });
 
     // Générer رمز تحقق رقمي (6 أرقام)

@@ -3,7 +3,7 @@ const router = express.Router();
 const reclamationController = require('../controllers/reclamationController');
 
 // Créer une nouvelle réclamation
-router.post('/', reclamationController.create);
+router.post('/:id', reclamationController.create);
 
 // Récupérer toutes les réclamations
 router.get('/', reclamationController.getAll);

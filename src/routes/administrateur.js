@@ -36,15 +36,17 @@ router.post('/superviseurs', authMiddleware, administrateurController.createSupe
 router.get('/superviseurs/:id', authMiddleware, administrateurController.getSuperviseur);
 
 // --- مسارات الوكلاء ---
+// جلب جميع الوكلاء (يتطلب صلاحيات المدير)
+router.get('/operateurs/agents', authMiddleware, administrateurController.getAllAgents);
+
 // إنشاء وكيل جديد (من طرف المدير) (يتطلب صلاحيات المدير)
 router.post('/agents', authMiddleware, administrateurController.createAgent);
+router.get('/reclamations', (req, res, next) => {
+  console.log('Reached administrator reclamations route');
+  next();
+}, authMiddleware, administrateurController.getAllReclamations);
 
-// جلب مدير واحد حسب id (يتطلب صلاحيات المدير)
-router.get('/:id', authMiddleware, administrateurController.getOne);
-
-// --- مسارات إدارة الشكاوى (للمدير) ---
-router.get('/reclamations', authMiddleware, administrateurController.getAllReclamations);
 router.get('/reclamations/:id', authMiddleware, administrateurController.getReclamation);
 router.put('/reclamations/:id', authMiddleware, administrateurController.updateReclamation);
-
+router.get('/:id', authMiddleware, administrateurController.getOne);
 module.exports = router;

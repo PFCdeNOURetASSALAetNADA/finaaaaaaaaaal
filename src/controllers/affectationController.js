@@ -4,6 +4,7 @@ const Affectation = require('../models/affectation');
 exports.create = async (req, res) => {
   try {
     const { agent_id, reclamation_id, date_affectation } = req.body;
+    console.log('Received request body:', req.body);
     const affectation = await Affectation.create({
       agent_id,
       reclamation_id,

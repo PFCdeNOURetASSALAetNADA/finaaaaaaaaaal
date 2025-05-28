@@ -10,6 +10,7 @@ Abonne.init({
   email: { type: DataTypes.STRING, allowNull: false, unique: true },
   mot_de_passe: { type: DataTypes.STRING, allowNull: false },
   reference: { type: DataTypes.STRING, allowNull: false, unique: true },
+  region: { type: DataTypes.STRING(50), allowNull: false },
   code_verification: { type: DataTypes.STRING, allowNull: true },
   date_expiration_code: { type: DataTypes.DATE, allowNull: true },
   email_verifie: { type: DataTypes.BOOLEAN, defaultValue: false }
